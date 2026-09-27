@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Nhập thông tin sinh viên</title>
+</head>
+<body>
+
+    <h2>NHẬP THÔNG TIN SINH VIÊN</h2>
+    <form action="https://google.com" method="POST">
+        <table border="1" cellpadding="5" cellspacing="0">
+            <tr>
+                <td rowspan="3" align="center" valign="middle">
+                    <img src="img/hinh01.jpg" alt="Hình ảnh đại diện" width="150">
+                </td>
+                <td><label for="hoten">HỌ VÀ TÊN:</label></td>
+                <td><input type="text" id="hoten" name="hoten" style="width: 95%;"></td>
+            </tr>
+            <tr>
+                <td><label for="mssv">MÃ SỐ SINH VIÊN :</label></td>
+                <td><input type="text" id="mssv" name="mssv" style="width: 95%;"></td>
+            </tr>
+            <tr>
+                <td><label for="ngaysinh">NGÀY SINH:</label></td>
+                <td><input type="date" id="ngaysinh" name="ngaysinh"></td>
+            </tr>
+            <tr>
+                <td>CHUYÊN NGÀNH:</td>
+                <td colspan="2">
+                    <input type="radio" id="cnpm" name="chuyennganh" value="CNPM">
+                    <label for="cnpm">CNPM</label>
+                    <input type="radio" id="httt" name="chuyennganh" value="HTTT">
+                    <label for="httt">HTTT</label>
+                    <input type="radio" id="anm" name="chuyennganh" value="ANM">
+                    <label for="anm">AN NINH MẠNG</label>
+                </td>
+            </tr>
+            <tr>
+                <td>SỞ THÍCH:</td>
+                <td colspan="2">
+                    <input type="checkbox" id="st1" name="sothich" value="Lập trình">
+                    <label for="st1">VIẾT CHƯƠNG TRÌNH</label><br>
+                    <input type="checkbox" id="st2" name="sothich" value="CSDL">
+                    <label for="st2">PHÂN TÍCH CSDL</label><br>
+                    <input type="checkbox" id="st3" name="sothich" value="Mạng">
+                    <label for="st3">XÂY DỰNG SƠ ĐỒ MẠNG</label>
+                </td>
+            </tr>
+            <tr>
+                <td><label for="mausac">MÀU SẮC YÊU THÍCH:</label></td>
+                <td colspan="2">
+                    <input type="color" id="mausac" name="mausac" value="#000000">
+                </td>
+            </tr>
+            <tr>
+                <td><label for="hinhdaidien">HÌNH ĐẠI DIỆN:</label></td>
+                <td colspan="2">
+                    <input type="file" id="hinhdaidien" name="hinhdaidien">
+                </td>
+            </tr>
+            <tr>
+                <td><label for="tendangnhap">TÊN ĐĂNG NHẬP WEB TRƯỜNG:</label></td>
+                <td><label for="matkhau">MẬT KHẨU ĐĂNG NHẬP WEB TRƯỜNG:</label></td>
+                <td>
+                    <input type="text" id="tendangnhap" name="tendangnhap">
+                    <input type="password" id="matkhau" name="matkhau">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3" align="center">
+                    <input type="submit" value="Gửi dữ liệu về máy chủ">
+                </td>
+            </tr>
+        </table>
+    </form>
+
+</body>
+</html>

@@ -1,0 +1,150 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>To-Do List</title>
+    <style>
+        body {
+            background-color: #e8e8e8;
+            display: flex;
+            justify-content: center;
+            padding-top: 50px;
+            font-family: Arial, sans-serif;
+        }
+
+        .todo-card {
+            width: 350px;
+            background-color: #ffffff;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .input-header {
+            display: flex;
+            background-color: #606f7b;
+        }
+
+            .input-header input {
+                flex: 1;
+                padding: 15px;
+                border: none;
+                background: transparent;
+                color: #ffffff;
+                font-size: 18px;
+                outline: none;
+            }
+
+                .input-header input::placeholder {
+                    color: #a0aec0;
+                }
+
+            .input-header button {
+                width: 60px;
+                background-color: #4dc0b5;
+                border: none;
+                color: white;
+                font-size: 28px;
+                cursor: pointer;
+                outline: none;
+            }
+
+                .input-header button:hover {
+                    background-color: #38a89d;
+                }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            padding: 15px;
+            border-bottom: 1px solid #edf2f7;
+            display: flex;
+            align-items: center;
+            font-size: 18px;
+            color: #2d3748;
+        }
+
+            li input[type="checkbox"] {
+                width: 18px;
+                height: 18px;
+                margin-right: 15px;
+                cursor: pointer;
+            }
+
+            li.completed span {
+                text-decoration: line-through;
+                color: #a0aec0;
+            }
+    </style>
+</head>
+<body>
+
+    <div class="todo-card">
+        <div class="input-header">
+            <input type="text" id="taskInput" placeholder="Enter a task">
+            <button onclick="addTask()">+</button>
+        </div>
+        <ul id="taskList">
+            <!-- Việc mẫu ban đầu -->
+            <li class="completed">
+                <input type="checkbox" checked onclick="toggleTask(this)">
+                <span>Việc 1</span>
+            </li>
+            <li>
+                <input type="checkbox" onclick="toggleTask(this)">
+                <span>Việc 2</span>
+            </li>
+            <li>
+                <input type="checkbox" onclick="toggleTask(this)">
+                <span>Việc 3</span>
+            </li>
+        </ul>
+    </div>
+
+    <script>
+        // Hàm thêm việc mới
+        function addTask() {
+            let input = document.getElementById("taskInput");
+            let taskText = input.value.trim();
+
+            if (taskText === "") {
+                alert("Vui lòng nhập nội dung công việc!");
+                return;
+            }
+
+            let ul = document.getElementById("taskList");
+            let li = document.createElement("li");
+
+            li.innerHTML = `
+                <input type="checkbox" onclick="toggleTask(this)">
+                <span>${taskText}</span>
+            `;
+
+            ul.appendChild(li);
+            input.value = ""; // Xóa ô nhập sau khi thêm
+        }
+
+        // Bắt sự kiện phím Enter ở ô nhập
+        document.getElementById("taskInput").addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+                addTask();
+            }
+        });
+
+        // Hàm gạch ngang công việc khi tích checkbox
+        function toggleTask(checkbox) {
+            let li = checkbox.parentElement;
+            if (checkbox.checked) {
+                li.classList.add("completed");
+            } else {
+                li.classList.remove("completed");
+            }
+        }
+    </script>
+
+</body>
+</html>

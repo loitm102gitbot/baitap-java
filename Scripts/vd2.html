@@ -1,0 +1,209 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài Tập JavaScript</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
+
+        .bai-tap {
+            border: 1px solid #ccc;
+            padding: 15px;
+            margin-bottom: 25px;
+            border-radius: 5px;
+        }
+
+        .my-div {
+            padding: 8px;
+            margin: 4px 0;
+            border: 1px solid #999;
+        }
+
+        .game-container {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            background: url('img/hinh01.png') no-repeat center/cover;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+        }
+
+        .box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .b1 {
+            background-color: #ffc107;
+        }
+
+        .b2 {
+            background-color: #8bc34a;
+        }
+
+        .b3 {
+            background-color: #f44336;
+        }
+
+        .b4 {
+            background-color: #00bcd4;
+        }
+    </style>
+</head>
+<body>
+
+    <h1 align="center">BÀI TẬP JAVASCRIPT</h1>
+
+    <!-- BÀI 1 -->
+    <div class="bai-tap">
+        <h3>Bài 1: In số từ 1 đến N</h3>
+        <label>Nhập N: </label>
+        <input type="number" id="numberInput" value="10">
+        <button onclick="printNumbers()">In số</button>
+        <p id="result1"></p>
+    </div>
+
+    <!-- BÀI 2 -->
+    <div class="bai-tap">
+        <h3>Bài 2: Đổi màu 10 thẻ DIV</h3>
+        <button onclick="changeColorDivs()">Đổi màu DIV (Chẵn đỏ, Lẻ xanh)</button><br><br>
+        <div class="my-div">Thẻ Div 1</div>
+        <div class="my-div">Thẻ Div 2</div>
+        <div class="my-div">Thẻ Div 3</div>
+        <div class="my-div">Thẻ Div 4</div>
+        <div class="my-div">Thẻ Div 5</div>
+        <div class="my-div">Thẻ Div 6</div>
+        <div class="my-div">Thẻ Div 7</div>
+        <div class="my-div">Thẻ Div 8</div>
+        <div class="my-div">Thẻ Div 9</div>
+        <div class="my-div">Thẻ Div 10</div>
+    </div>
+
+    <!-- BÀI 3 -->
+    <div class="bai-tap">
+        <h3>Bài 3: Thay đổi thuộc tính trang web</h3>
+        <label>MauNen: </label><input type="text" id="MauNen" value="lightyellow"><br>
+        <label>MauChu: </label><input type="text" id="MauChu" value="darkblue"><br>
+        <label>TieuDe: </label><input type="text" id="TieuDe" value="Trang Web Đã Thay Đổi"><br>
+        <label>TrangThai: </label><input type="text" id="TrangThai" value="Đã cập nhật"><br><br>
+        <button onclick="changeAttributes()">ThayDoi</button>
+    </div>
+
+    <!-- BÀI 4 -->
+    <div class="bai-tap">
+        <h3>Bài 4: Đổi màu nền trang web</h3>
+        <input type="button" value="Xanh" onclick="document.body.style.backgroundColor='blue'">
+        <input type="button" value="Đỏ" onclick="document.body.style.backgroundColor='red'">
+    </div>
+
+    <!-- BÀI 5 -->
+    <div class="bai-tap">
+        <h3>Bài 5: Giải phương trình bậc 2 (ax² + bx + c = 0)</h3>
+        Nhập a: <input type="number" id="a"><br>
+        Nhập b: <input type="number" id="b"><br>
+        Nhập c: <input type="number" id="c"><br><br>
+        <button onclick="solvePTB2()">Giải phương trình</button>
+        <p id="ptb2Result"></p>
+    </div>
+
+    <!-- BÀI 6 -->
+    <div class="bai-tap">
+        <h3>Bài 6: Slide Show Ảnh</h3>
+        <img id="slideImg" src="img/images.jpg" width="200" height="150" alt="Slide Show"><br><br>
+        <button onclick="prevImage()">Trước</button>
+        <button onclick="nextImage()">Sau</button>
+    </div>
+
+    <!-- BÀI 7 -->
+    <div class="bai-tap">
+        <h3>Bài 7: Game lật hình (Click vào ô để biến mất)</h3>
+        <div class="game-container">
+            <div class="box b1" onclick="this.style.visibility='hidden'">1</div>
+            <div class="box b2" onclick="this.style.visibility='hidden'">2</div>
+            <div class="box b3" onclick="this.style.visibility='hidden'">3</div>
+            <div class="box b4" onclick="this.style.visibility='hidden'">4</div>
+        </div>
+    </div>
+
+    <!--  JAVASCRIPT  -->
+    <script>
+                // JS Bài 1
+                function printNumbers() {
+                    let n = parseInt(document.getElementById("numberInput").value);
+                    let res = "";
+                    for (let i = 1; i <= n; i++) res += i + " ";
+                    document.getElementById("result1").innerText = res;
+                }
+
+                // JS Bài 2
+                function changeColorDivs() {
+                    let divs = document.querySelectorAll(".my-div");
+                    for (let i = 0; i < divs.length; i++) {
+                        if ((i + 1) % 2 === 0) {
+                            divs[i].style.backgroundColor = "red";
+                            divs[i].style.color = "white";
+                        } else {
+                            divs[i].style.backgroundColor = "blue";
+                            divs[i].style.color = "white";
+                        }
+                    }
+                }
+
+                // JS Bài 3
+                function changeAttributes() {
+                    document.body.style.backgroundColor = document.getElementById("MauNen").value;
+                    document.body.style.color = document.getElementById("MauChu").value;
+                    document.title = document.getElementById("TieuDe").value;
+                    window.status = document.getElementById("TrangThai").value;
+                }
+
+                // JS Bài 5
+                function solvePTB2() {
+                    let a = parseFloat(document.getElementById("a").value);
+                    let b = parseFloat(document.getElementById("b").value);
+                    let c = parseFloat(document.getElementById("c").value);
+                    let res = document.getElementById("ptb2Result");
+
+                    if (isNaN(a) || isNaN(b) || isNaN(c)) {
+                        res.innerText = "Vui lòng nhập đủ 3 số a, b, c!";
+                        return;
+                    }
+                    if (a === 0) {
+                        res.innerText = (b === 0) ? (c === 0 ? "Vô số nghiệm" : "Vô nghiệm") : "Nghiệm x = " + (-c / b);
+                        return;
+                    }
+                    let delta = b * b - 4 * a * c;
+                    if (delta < 0) res.innerText = "Phương trình vô nghiệm";
+                    else if (delta === 0) res.innerText = "Nghiệm kép x1 = x2 = " + (-b / (2 * a));
+                    else {
+                        let x1 = (-b + Math.sqrt(delta)) / (2 * a);
+                        let x2 = (-b - Math.sqrt(delta)) / (2 * a);
+                        res.innerText = "2 nghiệm: x1 = " + x1 + ", x2 = " + x2;
+                    }
+                }
+
+                // JS Bài 6
+                let images = ["img/images.png", "img/hinh01.jpg"];
+                let imgIndex = 0;
+                function nextImage() {
+                    imgIndex = (imgIndex + 1) % images.length;
+                    document.getElementById("slideImg").src = images[imgIndex];
+                }
+                function prevImage() {
+                    imgIndex = (imgIndex - 1 + images.length) % images.length;
+                    document.getElementById("slideImg").src = images[imgIndex];
+                }
+    </script>
+</body>
+</html>

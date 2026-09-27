@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Đồng hồ kỹ thuật số</title>
+    <style>
+        body {
+            background-color: #111;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .clock-box {
+            background-color: #000;
+            padding: 20px 50px;
+            border: 2px solid #333;
+        }
+
+        #clock {
+            color: #00d8ff;
+            font-size: 65px;
+            font-weight: bold;
+            font-family: 'Courier New', Courier, monospace;
+            letter-spacing: 3px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="clock-box">
+        <div id="clock">00:00:00 AM</div>
+    </div>
+
+    <script>
+                function showTime() {
+                    let date = new Date();
+                    let h = date.getHours();
+                    let m = date.getMinutes();
+                    let s = date.getSeconds();
+                    let session = "AM";
+
+                    if (h == 0) {
+                        h = 12;
+                    }
+                    if (h > 12) {
+                        h = h - 12;
+                        session = "PM";
+                    }
+
+                    h = (h < 10) ? "0" + h : h;
+                    m = (m < 10) ? "0" + m : m;
+                    s = (s < 10) ? "0" + s : s;
+
+                    let time = h + ":" + m + ":" + s + " " + session;
+                    document.getElementById("clock").innerText = time;
+
+                    setTimeout(showTime, 1000);
+                }
+
+                showTime();
+    </script>
+
+</body>
+</html>
